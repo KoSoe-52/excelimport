@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+//test
 if(isset($_POST["voucher"]))
 {
     $count=0;
