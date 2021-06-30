@@ -1,0 +1,8 @@
+php.ini  မှာ
+1. max_execution_time ကို များများ မြှင့်ပေးရန်
+2. post_max_size M မြှင့်ပေးရန်
+3. upload_max_filesize M မြှင့်ပေးရန်
+4. memory_limit မြှင်ပေးရန်
+5. max_input_vars default 1000 အစား အချက်အလက်ပေါ်မှုတည်ပြီး မြှင့်ပေးရန် 
+6. excel import လုပ်တဲ့အခါ microsoft update မဖြစ်လျှင် warning 4 ခုတက်ပါသည်
+7. voucher နံပါတ်သည် unique ဖြစ်နိုင်သည့်အတွက် unique လုပ်ထားပါသည် 

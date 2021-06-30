@@ -1,0 +1,51 @@
+@font-face{
+	font-family:Myanmar3;
+	src:local('Myanmar3'), url('font/Myanmar3.ttf') format('ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+*{
+	font-family:Myanmar3;
+}
+.homeTbl tr th,.homeTbl tr td{
+	padding:7px;border:none;border:1px solid #ccc;border-bottom:none;border-bottom:1px solid #ccc;
+}
+.loginDiv{
+}
+.username{
+	
+	background-repeat: no-repeat;
+	background-position: 2px 3px;
+	text-indent:25px; 
+}
+.password{
+
+	background-repeat: no-repeat;
+	background-position: 2px 3px;
+	text-indent:25px; 
+}
+#dataDiv{
+	margin-top:10px;
+}
+
+.deleteSoldier{
+	border:none;padding:6px 25px 6px 25px;border-radius:4px;
+	background-color:red;color:#FFF;float:right;margin-right:0px;cursor:pointer;
+	display:none;
+}
+.checkAll,.OptVal{
+cursor:pointer;
+}
+.rowNumClk{
+	cursor:pointer;
+}
+div.dataTables_filter input{
+	padding:5px;border:none;border:1px solid #ccc;border-radius:3px;
+}
+::-webkit-input-placeholder{
+	color:#000;
+}
+.dataTables_length label select{
+	color:#999;padding:4px;border:1px solid #ccc;border-radius:4px;
+}
+
