@@ -27,6 +27,7 @@
 	<div class="container  col-md-12 col-lg-12">
 			<div class="viewPop col-md-12 col-lg-12" style="padding:10px;z-index:1000;height:90%;max-height:90%;border-radius:3px;border:1px solid #ccc;overflow:scroll;">
 			<?php 
+				include("config.php");
 				if(isset($_POST["import"]))
 				{
 					$file=$_FILES["import_csv"]["tmp_name"];
@@ -66,11 +67,38 @@
 							$counter=0;
 							foreach($Reader as $key=>$val)
 							{
+								if($val[1] !="" || $val[1] != null)
+								{
 								if($key !=0)
 								{
 									$d4 = date("Y-m-d H:i:s",strtotime($val[4]));
 									$d13= date('Y-m-d',strtotime(@$val[13]));
 									$d18= date('Y-m-d H:i:s',strtotime(@$val[18]));
+									if(check(@$val[1]) > 0)
+									{
+										echo "<tr style='color:green'>";
+										echo "<td>".$key."</td>";
+										echo "<td>$val[1]</td>";
+										echo "<td>$val[2]</td>";
+										echo "<td>$val[3]</td>";
+										echo "<td>$d4</td>";
+										echo "<td>$val[5]</td>";
+										echo "<td>$val[6]</td>";
+										echo "<td>$val[7]</td>";
+										echo "<td>$val[8]</td>";
+										echo "<td>$val[9]</td>";
+										echo "<td>$val[10]</td>";
+										echo "<td>$val[11]</td>";
+										echo "<td>$val[12]</td>";
+										echo "<td>$d13</td>";
+										echo "<td>$val[14]</td>";
+										echo "<td>$val[15]</td>";
+										echo "<td>$val[16]</td>";
+										echo "<td>$val[17]</td>";
+										echo "<td>$d18</td>";
+									echo "</tr>";
+									}else
+									{
 									echo "<tr>";
 										echo "<td>".$key."</td>";
 										echo "<td>$val[1]<input type='hidden' value='$val[1]' name='voucher[]'></td>";
@@ -92,14 +120,30 @@
 										echo "<td>$val[17]<input type='hidden' value='$val[17]' name='totalcharge[]'></td>";
 										echo "<td>$d18<input type='hidden' value='$d18' name='clouddatetime[]'></td>";
 									echo "</tr>";
+									}
 								}
 								$counter++;
-							}
+								}
+							} //foreach
 							echo "</table>";
-							echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px;z-index:2000;"><button class="closePop" style="float:right;padding:6px 20px 6px 20px;margin-left:20px;border:none;border-radius:3px;background-color:red;color:#FFF;">ပိတ်မည်</button><input type="submit" value="ထည့်သွင်းမည်"  style="border-radius:3px;float:right;color:#FFF;z-index:2000;cursor:pointer;background-color:#507299;border:1px solid #ccc;padding:6px;"><span class="importInfo" style="float:right;margin-right:200px;width:100%;"></span></div>';
-							echo "</form>";
+							?>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style="margin-top:20px;z-index:2000;">
+								<span class="importInfo col-md-6 col-lg-6 col-xl-6 align-center"></span>
+								<input type="submit" value="ထည့်သွင်းမည်"  style="border-radius:3px;float:right;color:#FFF;z-index:2000;cursor:pointer;background-color:#507299;border:1px solid #ccc;padding:6px;">
+							</div>
+							</form>
+							<?php
 						}
 					}
+				}
+				function check($voucher)
+				{
+					global $conn;
+					$stmt = $conn->prepare("SELECT COUNT(id) AS total FROM cars WHERE voucher=?");
+					$stmt->bindParam(1,$voucher,PDO::PARAM_STR);
+					$stmt->execute();
+					$data = $stmt->fetch(PDO::FETCH_ASSOC);
+					return $data["total"];
 				}
 				?>
 				
